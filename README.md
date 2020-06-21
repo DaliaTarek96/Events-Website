@@ -3,7 +3,7 @@
 #project description
 #this website to make events where the admin add speakers then add events which consists of (Event name, Main speaker, Other speakers)
 from speakers added.
-# each speaker can see events he will participate in through his profile
+ each speaker can see events he will participate in through his profile
 
 
 ## responsive website 

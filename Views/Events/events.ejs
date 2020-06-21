@@ -1,0 +1,60 @@
+<%- include("../Partials/header") -%>
+<div class="container-fluid bg-dark">
+    <div class="container">
+        <table class="table table-dark table-responsive-lg m-0">
+            <thead >
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Main Speaker</th>
+                    <th>Other Speaker</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+               <%events.forEach((event)=>{%>
+                 <tr>
+                    <td><%=event._id%></td>
+                    <td><%=event.title%></td>
+                    <%if(event.mainSpeaker == null){%>
+                        <td></td>
+                    <%}else{%>
+                        <td><%=event.mainSpeaker.userName%></td>
+                   <%}%>
+                    
+                    <td> <ul>
+                        <%event.otherSpeakers.forEach((speaker)=>{%>
+                           <li><%=speaker.userName%></li>
+                        <%})%>
+                      </ul></td>
+                    <td><a href="/event/edit/<%=event._id%>" class="btn btn-info">Edit</a></td>
+                    <td><a href="#" onclick="deleteEvent(<%=event._id%>,this)" class="btn btn-danger">Delete</a></td>
+                </tr>
+                    <%})%> 
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(function(){
+        $("table").css({minHeight:$(window).innerHeight()-100+"px"});
+    });
+   function deleteEvent(eventID,anchor){
+    let confirmDelete = confirm("Are you sure, you want delete this Event ?");
+    if(confirmDelete){
+        $.ajax({
+           url:"http://localhost:8088/event/delete",
+           method:"post",
+           dataType:"text",
+           contentType:"application/json",
+           data:JSON.stringify({id:eventID}),
+           success:function(data){$(anchor).parents("tr").remove();},
+           error:function(Error){console.log(error);}
+       })
+    }
+     
+   }
+</script>
+
+<%- include("../Partials/footer") -%>

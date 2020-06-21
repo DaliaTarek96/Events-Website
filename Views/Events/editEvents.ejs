@@ -1,0 +1,41 @@
+<%- include("../Partials/header") -%>
+<form action="/event/edit/<%=events._id%>" method="POST">
+    <div class="container-fluid event" >
+        <div class="overlay" style="background-color:rgba(0, 0, 0, .8);">
+            <div class="container speakerForm text-center">
+                <p class="h1">Edit Event Info</p>
+                <div class="input-group">
+                    <span class="input-group-prepend"><i class="input-group-text fa fa-user"></i></span>
+                    <input type="text" name="title" class="form-control" placeholder="Title" value="<%=events.title%>" />
+                </div>
+                <select class="form-control w-50" name="mainSpeaker" >
+                    <%speakers.forEach((speaker)=>{
+                                if((!(events.mainSpeaker==null))){
+                                    if(events.mainSpeaker.userName == speaker.userName) {%>
+                                        <option selected value="<%=speaker._id%>"><%=speaker.userName%></option>  
+                                    <%}else{%>
+                                        <option  value="<%=speaker._id%>"><%=speaker.userName%></option>
+                            
+                                    <%}}else{%>
+                                        <option  value="<%=speaker._id%>"><%=speaker.userName%></option>  
+                                <%}})%>
+
+                </select>
+                <select class="form-control w-50" name="otherSpeakers" multiple>
+                    <%speakers.forEach((speaker)=>{ let state = 0;
+                        events.otherSpeakers.forEach((event)=>{%>
+                                <%if(speaker._id == event._id ){  state = 1;}%>
+                        <%}); if(state == 1 ){%>
+                            <option selected value="<%=speaker._id%>"><%=speaker.userName%></option> 
+                        <%}else{%>
+                            <option  value="<%=speaker._id%>"><%=speaker.userName%></option> 
+                        <%}})%>
+                </select>
+                
+                <button class="btn text-light w-25 Update">Update</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="/JS/editSpeaker.js"></script>
+<%- include("../Partials/footer") -%>

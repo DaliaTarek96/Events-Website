@@ -1,0 +1,49 @@
+<%- include("../Partials/header") -%>
+<div class="container-fluid bg-dark">
+    <div class="container">
+        <table class="table table-dark m-0">
+            <thead >
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th></th>
+                        <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <%speakers.forEach((speaker)=>{%>
+                 <tr>
+                    <td><%=speaker._id%></td>
+                    <td><%=speaker.name%></td>
+                    <td><%=speaker.age%></td>
+                    <td><a href="/speaker/edit/<%=speaker._id%>" class="btn btn-info">Edit</a></td>
+                    <td><a href="#" onclick="deleteSpeaker(<%=speaker._id%>,this)" class="btn btn-danger">Delete</a></td>
+                </tr>
+                    <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(function(){
+        $("table").css({minHeight:$(window).innerHeight()-100+"px"});
+    });
+   
+    function deleteSpeaker(speakerID,anchor){
+        let confirmDelete = confirm("Are you sure, you want delete this speaker ?");
+       if(confirmDelete){
+        $.ajax({
+           url:"http://localhost:8088/speaker/delete",
+           method:"post",
+           dataType:"text",
+           contentType:"application/json",
+           data:JSON.stringify({id:speakerID}),
+           success:function(data){ $(anchor).parents("tr").remove();},
+           error:function(Error){console.log(error)}
+       });
+       }
+    }
+</script>
+
+<%- include("../Partials/footer") -%>

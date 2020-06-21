@@ -1,0 +1,31 @@
+
+.loginForm{
+    padding: 0;
+    padding-top: 8%;
+}
+.reg{
+    padding: 0;
+    padding-top: 4%;
+}
+.loginForm p{
+    font-family:"French Script MT", Arial, Helvetica, sans-serif;
+    font-size: 60px;
+}
+ .loginForm   .input-group{
+    width: 50%;
+    margin: 50px auto;
+}
+.reg  .input-group{
+    width: 50%;
+    margin: 30px auto;
+}
+.loginSlider{
+    padding: 0;
+}
+.loginSlider img,.loginSlider .carousel,.loginSlider .carousel-inner,.loginSlider .carousel-item{
+    width: 100%;
+    height: 100%;
+}
+.loginSlider .carousel-indicators{
+    margin-bottom: 0;
+}

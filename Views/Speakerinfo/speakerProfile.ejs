@@ -1,0 +1,60 @@
+<%- include("../Partials/header") -%>
+<div class="container-fluid speakerProfile bg-dark">
+    <div class="container ">
+        <p class="h2  text-white " style="font-family: 'Segoe Print',Arial">Events you will speak as Main Speaker</p>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>EventID</th>
+                    <th>Events</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%let m=0; events.forEach((event)=>{
+                    if(!(event.mainSpeaker==null)){
+                        if(event.mainSpeaker.userName==UserName){m++;%>
+                            <tr>
+                                <td><%=event._id%></td>
+                                <td><%=event.title%></td>
+                            </tr>
+                <%}}}); if(m==0){%>
+                    <tr >
+                        <td colspan="2" style="padding:60px 0px ;"><P class="h1 text-center text-warning">You aren't main speaker in any event yet ....</P></td>
+                    </tr>
+            <%}%> 
+            </tbody>
+        </table>
+        <hr/>
+        <p class="h2 text-white" style='font-family: "Segoe Print",Arial'>Events you will speak as Other Speaker</p>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>EventID</th>
+                    <th>Events</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%let i =0;events.forEach((event)=>{
+                    event.otherSpeakers.forEach((speaker)=>{
+                        if(speaker.userName==UserName){
+                            i++;
+                            %>
+                            <tr>
+                                <td><%=event._id%></td>
+                                <td class="text-white "><%=event.title%></td>
+                           </tr>
+                <%}})});
+               if(i==0){%>
+                        <tr>
+                            <td colspan="2" style="padding:60px 0px ;"><P class="h1 text-center text-warning">You aren't other speaker in any event yet ....</P></td>
+                        </tr>
+                <%}%>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    $(".speakerProfile").css({minHeight:$(window).innerHeight()});
+</script>
+<%- include("../Partials/footer") -%>

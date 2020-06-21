@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width ,initial-scale=1" >
+        <title>Fantastic Events</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="CSS/font-awesome.css" rel="stylesheet">
+        <link href="CSS/login.css" rel="stylesheet">
+    </head>
+    <body>
+        <form action="/register" method="post">
+        <div class="container-fluid">
+           
+            <div class="row" >
+                <div class="col-md-6 text-center loginForm reg">
+                    <p class="h1 text-danger">Fantastic Events</p>
+                  <form >
+                    <div class="input-group">
+                        <span class="input-group-prepend"><i class="input-group-text fa fa-user"></i></span>
+                        <input type="text" placeholder="Name" name="name" class="form-control" >
+                    </div>
+                      <div class="input-group">
+                          <span class="input-group-prepend"><i class="input-group-text fa fa-user"></i></span>
+                          <input type="text" placeholder="User Name" name="UserName" class="form-control" >
+                      </div>
+                      
+                      <div class="input-group">
+                        <span class="input-group-prepend"><i class="input-group-text fa fa-lock"></i></span>
+                        <input type="password" placeholder="User Password" name="UserPassword" class="form-control" >
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-prepend"><i class="input-group-text fa fa-lock"></i></span>
+                        <input type="password" placeholder="Confirm Password" name="ConfirmPassword" class="form-control" >
+                    </div>
+                    <h5 class="text-danger"> <%=errormessage%></h5>
+                    <div class="input-group">
+                        <span class="input-group-prepend"><i class="input-group-text fa fa-envelope"></i></span>
+                        <input type="email" placeholder="User Email" name="UserEmail" class="form-control" >
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-prepend"><i class="input-group-text fa fa-child"></i></span>
+                        <input type="number" min="20" max="45" placeholder="User Age" name="UserAge" class="form-control" >
+                    </div>
+                      <h5 class="text-danger"></h5><br/>
+                      <input type="submit" value="SIGN UP" class="btn btn-danger ">
+                  </form>
+                </div>
+                <div class="d-none d-md-block col-md-6 loginSlider">
+                  <div class="carousel slide" id="mycarousel" data-ride="carousel" data-interval="1500">
+                      <ul class="carousel-indicators">
+                          <li data-slide-to="0" data-target="#mycarousel" class="active"></li>
+                          <li data-slide-to="1" data-target="#mycarousel"></li>
+                          <li data-slide-to="2" data-target="#mycarousel"></li>
+                          <li data-slide-to="3" data-target="#mycarousel"></li>
+                      </ul>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="Images/conference.webp" alt="event1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Images/images.jpg" alt="event2"></div>
+                          <div class="carousel-item">
+                              <img src="Images/event2.jfif" alt="event2">
+                          </div>
+                          <div class="carousel-item">
+                              <img src="Images/event4.jfif" alt="event4">
+                          </div>
+                      </div>
+                      
+                  </div>
+               </div>
+              </div>
+           
+        </div>
+    </form>
+        <script src="jquery.min.js"></script>
+        <script src="JS/register.js">
+        </script>
+        <script src="JS/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>

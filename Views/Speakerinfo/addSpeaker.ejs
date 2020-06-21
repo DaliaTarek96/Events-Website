@@ -1,0 +1,30 @@
+<%- include("../Partials/header.ejs") -%>
+<form action="/speaker/add" method="POST">
+    <div class="container-fluid speaker">
+        <div class="overlay">
+            <div class="container speakerForm text-center">
+                <p class="h1">Add New Speaker</p>
+                <div class="input-group">
+                    <span class="input-group-prepend"><i class="input-group-text fa fa-user"></i></span>
+                    <input type="text" class ="form-control" placeholder="Full Name" name="name">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-prepend"><i class="input-group-text fa fa-user"></i></span>
+                    <input type="text" class ="form-control" placeholder="User Name" name="username">
+                </div>
+                <h5 class="text-danger"><%=errorMessage%></h5>
+                <div class="input-group">
+                    <span class="input-group-prepend"><i class="input-group-text fa fa-lock"></i></span>
+                    <input type="password" class ="form-control" placeholder="User Password" name="Password">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-prepend"><i class="input-group-text fa fa-child"></i></span>
+                    <input type="number" class ="form-control" placeholder="User Age" name="age" min="20" max="45">
+                </div>
+                <button class="btn text-light w-25 Update">Add</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="/JS/addSpeaker.js"></script>
+<%- include("../Partials/footer.ejs") -%>

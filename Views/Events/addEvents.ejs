@@ -1,0 +1,32 @@
+<%- include("../Partials/header.ejs") -%>
+<form action="/event/add" method="POST">
+    <div class="container-fluid speaker" style="background-image: url(../Images/Convention-Centre.jpg);">
+        <div class="overlay" style="background-color:rgba(0, 0, 0, .8);">
+            <div class="container speakerForm text-center">
+                <p class="h1">Add New Event</p>
+                <div class="input-group">
+                    <span class="input-group-prepend"><i class="input-group-text fa fa-user"></i></span>
+                    <input type="text" class ="form-control" placeholder="Title" name="title">
+                </div>
+                
+                    <select class="form-control text-dark w-50" name="mainSpeaker">
+                        <option selected>Choose Main Speaker</option>
+                        <%speakers.forEach((speaker)=>{%>
+                            <option value="<%=speaker._id%>"><%=speaker.userName%></option>
+                        <%})%>
+                    </select>
+                 
+                    <select class="form-control text-dark w-50" multiple name="otherSpeakers">
+                        <optgroup label="Choose Other Speakers">
+                            <%speakers.forEach((speaker)=>{%>
+                                <option value="<%=speaker._id%>"><%=speaker.userName%></option>
+                            <%})%>
+                    </optgroup>
+                    </select>
+                <button class="btn text-light w-25 Update">Add </button>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="/JS/addEvent.js"></script>
+<%- include("../Partials/footer.ejs") -%>
